@@ -1,0 +1,43 @@
+<?php 
+if(isset($_SESSION['isConnected']) && $_SESSION['isConnected']==true)
+{
+?>
+<h1>EDIT YOUR PROFILE</h1>
+
+
+<p class= "content" >
+<form method="post" action="/profile/edit" class="form"><br>
+    <label>PSEUDO</label>    <input type="text" name="pseudo" placeholder="Nicolas"> <br><br>
+    <label>DESCRIPTION</label>    <input type="text" name="description" placeholder="Dupont"> <br><br>
+    <label>WEBSITE</label>    <input type="text" name="website" placeholder="www.dupontnicolas.fr"> <br><br>
+	<br><br>
+    <input type="submit" class="classe_button" value="Edit">
+
+</form> <br>
+
+</p>
+
+<?php
+}
+else 
+{
+	?>
+	<p class= "content" >
+<form method="post" action="/members/signup" class="form"><br>
+    <label>NAME </label>    <input type="text" name="name" placeholder="Nicolas"> <br><br>
+    <label>FIRST NAME</label>    <input type="text" name="firstName" placeholder="Dupont"> <br><br>
+    <label>EMAIL</label>    <input type="text" name="email" placeholder="dupont.nicolas@ece.fr"> <br><br>
+    <label>PASSWORD</label>    <input type="password" name="password"> <br><br>
+	<label>SEX</label>	<SELECT name="sex">
+		<OPTION VALUE="male">Male</OPTION>
+		<OPTION VALUE="female">Female</OPTION>
+	</SELECT> <br><br>
+	    <input type="submit" class="classe_button" value="Sign in">
+
+</form> <br>
+</p><br>
+
+	<?php
+}
+
+?>

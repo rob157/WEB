@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link type="text/css" href="/script/style.css" rel="stylesheet" />
+<title>DR. Claubin</title>
+</head>
+<header>
+
+
+
+
+<p class=titre><a href="index.php">DR. CLAUBIN</a></p>
+<span class="motto"> <p> <b> We take care of you! </b> </p> <br> </span>
+
+<p class=connect>
+<?php 
+if(!isset($_SESSION['isConnected'])  )
+{ 
+
+?>
+<p class= "content" >
+<form method="post" action="/members/signin" class="form"><br>
+    <label>LOGIN </label>    <input type="text" name="pseudo" placeholder="dnicolas"> <br><br>
+    <label>PASSWORD</label>    <input type="password" name="password"> <br><br>
+	<input type="submit" class="classe_button" value="sign in">
+
+</form> <br>
+</p>
+<?php
+}
+else if (isset($_SESSION['isConnected']) && $_SESSION['isConnected']==true)
+{
+?>
+<form method="post" action="/members/logout" class="form"><br>
+	<input type="submit" class="classe_button" value="logout">
+</form> <br>
+
+<?php
+}
+
+
+
+if(isset($_SESSION['isConnected'])){
+if ($_SESSION['isConnected']==true) echo 'Welcome'. $_SESSION['pseudo'];
+else echo 'you should connect';
+}
+else{ echo 'You should connect';}
+
+?>
+
+
+<nav>
+<ul> <li> <a href="/contact"> CONTACT PAGE </a> </li> 
+<?php
+if(isset($_SESSION['isConnected']) && $_SESSION['isConnected']==1){
+?>
+<li> <a href="/members/edit"> EDIT PROFILE </a> </li> 
+<?php
+}
+
+else 
+{
+?>
+
+<li> <a href="/members/signin"> SIGN IN PAGE </a> </li> 
+<?php
+} 
+?>
+<li> <a <li> <a href="/index/rss"> RSS </a> </li> 
+<?php
+if(isset($_SESSION['isConnected']) && $_SESSION['isConnected']==1 && $_SESSION['isAdmin']==1){
+?>
+<li> <a href="/members/list"> MEMBERS LIST </a> </li> 
+<?php
+}
+?>
+</ul>
+</nav>
+
+
+</header>
+<body>

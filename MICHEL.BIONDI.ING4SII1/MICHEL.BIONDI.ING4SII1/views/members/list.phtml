@@ -1,0 +1,66 @@
+
+
+
+
+
+ 
+<div class="wall">
+
+
+<?php
+require_once("/model/Members.php");
+
+$mymembers=new Members();
+
+$members=$mymembers->getAll();
+
+?>
+
+<h1>Members List:</h1>
+<br>
+
+
+
+
+<p id="table">
+
+<TABLE BORDER WIDTH=40%>
+    <CAPTION> Liste des membres </CAPTION> <br>
+
+    <TR>
+        <TH> Name </TH>
+        <TH> E-Mail </TH>
+        <TH> URL </TH>
+    </TR>
+	<?php 
+
+foreach($members as $memb)
+{ 
+
+?>
+    <TR>
+        <TD VALIGN="left"> <?php echo $memb['pseudo'] ?> </TD>
+		
+
+        <TD VALIGN="left"> 
+		<a href= <?php echo $memb['email'] ?> >
+		<?php echo $memb['email'] ?> <a/> </TD>
+		
+		<TD VALIGN="left"> 
+		<a href= <?php echo $memb['website'] ?> > 
+		Profile Page <a/>
+		</TD>
+		
+
+    </TR>
+			<?php
+}
+?>
+
+
+</TABLE> <br>
+</p>
+	
+	</div>
+	
+

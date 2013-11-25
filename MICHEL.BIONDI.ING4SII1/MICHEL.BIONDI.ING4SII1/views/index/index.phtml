@@ -1,0 +1,79 @@
+
+
+<p class="intro"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p> <br>
+
+<p class= "content" >
+<form method="post" action="/members/signup" class="form"><br>
+    <label>PSEUDO</label>    <input type="text" name="pseudo" placeholder="Nicolas"> <br><br>
+    <label>EMAIL</label>    <input type="text" name="email" placeholder="dupont.nicolas@ece.fr"> <br><br>
+    <label>PASSWORD</label>    <input type="password" name="password"> <br><br>
+	<label>SEX</label>	<SELECT name="sex">
+		<OPTION VALUE="male">Male</OPTION>
+		<OPTION VALUE="female">Female</OPTION>
+	</SELECT> <br><br>
+	    <input type="submit" class="classe_button" value="Sign up">
+
+</form> <br>
+</p><br>
+
+
+
+<p id="table">
+<TABLE BORDER WIDTH=80%>
+    <CAPTION> Liste des patients </CAPTION> <br>
+
+    <TR>
+        <TH> Pseudo</TH>
+        <TH> E-mail </TH>
+        <TH> Website </TH>
+        
+    </TR>
+	
+	<?php  
+	
+	require_once("/model/Members.php");
+
+	$mymembers=new Members();
+
+	$members=$mymembers->getFrontProfiles();
+	?>
+	
+	<?php 
+	$memberNb=0;
+	foreach ($members as $memb)
+	{
+	?>
+	
+	
+	
+    <TR>
+        <TD VALIGN="left"> <a href="/profile/view"><?php echo $memb['pseudo'] ?></a></TD>
+        <TD VALIGN="left"> <?php echo $memb['email'] ?> </TD>
+        <TD VALIGN="left"> <?php echo $memb['website'] ?> </TD>
+    
+    </TR>
+	
+	<?php
+	$memberNb++;
+	}
+	
+
+	?>
+	
+	
+	
+    
+	
+
+</TABLE> <br>
+</p>
+
+<?php 
+
+
+	
+	?>
+
+
+
+
